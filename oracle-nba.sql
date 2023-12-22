@@ -89,3 +89,37 @@ SELECT * FROM all_players_info;
 -- NEXT SESSION        
 -- Adding some more Constraints
 -- Using select statement and single row function
+ALTER TABLE positions
+ADD playstyle VARCHAR2(50);
+
+UPDATE positions 
+SET playstyle = 'More points';
+
+rollback;
+
+SELECT * FROM positions;
+
+commit;
+
+SELECT * FROM players;
+
+SELECT 
+player_num num, full_name ||' #'|| player_num jersey, fav_food
+FROM players;
+
+SELECT 
+player_num + 10 new_num, full_name, null ||'I Love eat '|| fav_food lovers_food
+FROM players;
+
+SELECT 
+COUNT(fav_food) counter_food FROM players;
+
+SELECT * FROM players WHERE team_id = 1;
+
+SELECT * FROM players ORDER BY full_name DESC;
+
+SELECT player_num, full_name, TO_CHAR(dob, 'yyyy') dob_year FROM players;
+
+SELECT player_num, full_name, TO_NUMBER(TO_CHAR(dob, 'yyyy')) + 20 dob_year FROM players;
+
+SELECT player_num, full_name, TO_CHAR(dob, 'Mon') dob_mon FROM players;
